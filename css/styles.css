@@ -85,7 +85,7 @@ a { color: var(--lake); }
 /* ===== Parallax splash ===== */
 .splash-sequence {
   position: relative;
-  height: 340svh;           /* scrub length */
+  height: 640svh;           /* scrub length — long enough that frames advance calmly */
   background: var(--forest-deep);
 }
 .splash-sequence[data-mode="static"] { height: 100svh; }
@@ -119,16 +119,90 @@ a { color: var(--lake); }
   top: 0;
   height: 100svh;
   margin-top: -100svh;      /* overlap the sticky canvas */
+  color: var(--white);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ===== Scroll-synced story beats ===== */
+.story-beat {
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
   padding: 0 clamp(20px, 7vw, 110px) clamp(72px, 12svh, 130px);
-  color: var(--white);
-  z-index: 2;
-  pointer-events: none;
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  visibility: hidden;
 }
-.splash-copy-layer a { pointer-events: auto; }
+.story-beat.is-active {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+}
+.story-beat.is-active a { pointer-events: auto; }
+.beat-right { align-items: flex-end; text-align: right; }
+.beat-right .splash-support { text-align: right; }
+.beat-center {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+@media (max-width: 640px) {
+  .beat-right { align-items: flex-start; text-align: left; }
+  .beat-right .splash-support { text-align: left; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .story-beat { transition: none; }
+}
+/* Static fallback (reduced motion / load failure): show only the opener. */
+.splash-sequence[data-mode="static"] .story-beat { display: none; }
+.splash-sequence[data-mode="static"] .story-beat:first-child {
+  display: flex;
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+}
+
+.splash-title-md { font-size: clamp(2rem, 6vw, 4.4rem); }
+.story-beat .splash-title { color: var(--white); }
+.story-beat .splash-title .accent { color: var(--sun); }
+
+.beat-math {
+  display: flex;
+  gap: clamp(16px, 3vw, 40px);
+  margin: 6px 0 22px;
+  flex-wrap: wrap;
+}
+.beat-math span {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 22px;
+  border-radius: 14px;
+  background: rgba(4, 26, 17, 0.55);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.beat-math strong {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1;
+  color: var(--sun);
+}
+.beat-math span > em {
+  font-style: normal;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 6px;
+}
 
 .splash-kicker {
   font-family: var(--font-display);

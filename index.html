@@ -44,6 +44,7 @@
       class="splash-sequence"
       data-manifest="./assets/frames/sequence-manifest.json"
       data-dpr-cap="2"
+      data-smoothing="0.14"
     >
       <div class="sequence-background-wrapper">
         <img class="sequence-poster" alt="" aria-hidden="true" />
@@ -51,15 +52,47 @@
         <div class="sequence-vignette" aria-hidden="true"></div>
       </div>
       <div class="splash-copy-layer">
-        <p class="splash-kicker">Trail-based endurance events</p>
-        <h1 class="splash-title">
-          Go&nbsp;Ever <span class="accent">Further.</span>
-        </h1>
-        <p class="splash-support">
-          One 5K loop. Hourly starts. No limits — just one more loop, for as
-          long as your legs and your grit hold out.
-        </p>
-        <a class="splash-cta" href="#series">Explore the series</a>
+        <div class="story-beat beat-left is-active" data-from="0" data-to="0.2">
+          <p class="splash-kicker">Trail-based endurance events</p>
+          <h1 class="splash-title">
+            Go&nbsp;Ever <span class="accent">Further.</span>
+          </h1>
+          <p class="splash-support">
+            No limits. No pressure. Just one more loop, for as long as your
+            legs and your grit hold out.
+          </p>
+        </div>
+
+        <div class="story-beat beat-right" data-from="0.26" data-to="0.46">
+          <p class="splash-kicker">The format</p>
+          <h2 class="splash-title splash-title-md">
+            One 5K loop.<br />Starts every&nbsp;<span class="accent">hour.</span>
+          </h2>
+          <p class="splash-support">
+            The whole field toes the line together. Run the loop, make the
+            cutoff, then decide: stop — or line up again.
+          </p>
+        </div>
+
+        <div class="story-beat beat-left" data-from="0.52" data-to="0.72">
+          <p class="splash-kicker">Every mile is earned</p>
+          <div class="beat-math" role="list">
+            <span role="listitem"><strong>2</strong><em>loops = 10K</em></span>
+            <span role="listitem"><strong>5</strong><em>loops = 25K</em></span>
+            <span role="listitem"><strong>10</strong><em>loops = 50K ultra</em></span>
+          </div>
+          <p class="splash-support">
+            No distance to commit to in advance. Every completed loop counts —
+            and every earned distance is honored.
+          </p>
+        </div>
+
+        <div class="story-beat beat-center" data-from="0.78" data-to="1">
+          <h2 class="splash-title splash-title-md">
+            How far will <span class="accent">you</span> go?
+          </h2>
+          <a class="splash-cta" href="#series">Explore the series</a>
+        </div>
       </div>
       <div class="scroll-indicator" aria-hidden="true">
         <span class="scroll-indicator-text">Scroll</span>
