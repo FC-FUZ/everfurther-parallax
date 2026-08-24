@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "frameCount": 238,
+  "startIndex": 1,
+  "framePad": 4,
+  "poster": { "path": "poster.webp" },
+  "profiles": {
+    "desktop": {
+      "filenamePattern": "desktop/frame_{index}.webp",
+      "frameCount": 238,
+      "width": 1920,
+      "height": 1080,
+      "viewportClass": "desktop"
+    },
+    "mobile": {
+      "filenamePattern": "mobile/frame_{index}.webp",
+      "frameCount": 238,
+      "width": 1080,
+      "height": 1920,
+      "viewportClass": "mobile"
+    }
+  }
+}
